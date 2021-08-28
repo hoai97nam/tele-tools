@@ -719,10 +719,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                     .style.display = "none";
                 document.getElementById("login-error")
                     .style.display = "none"
+                document.getElementById("login-start-error")
+                    .style.display = "none"
 
             } else {
                 document.getElementById("login-start-error")
                     .style.display = "block"
+                document.getElementById("logout-success")
+                    .style.display = "none";
             }
         });
     document.getElementById("login-code-button")
