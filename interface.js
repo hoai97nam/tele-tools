@@ -150,7 +150,6 @@ var y = async function () {
     } else {
         document.getElementsByClassName("freeversion")[0].style.display = "block";
         document.getElementsByClassName("freeversion")[1].style.display = "block";
-        document.getElementsByClassName("freeversion")[2].style.display = "block";
         let e = await o("actionslog");
         let t = i();
         document.getElementsByClassName("dailyactions")[0].textContent = (e[t] != undefined ? e[t] : "0") + "/" + s;
@@ -161,7 +160,7 @@ var y = async function () {
             document.getElementsByClassName("starttrue")[0].style.display = "none";
             document.getElementsByClassName("starttrue")[1].style.display = "none";
             document.getElementsByClassName("startfalse")[0].getElementsByTagName("p")[0].textContent = "Daily actions limit reached - upgrade for unlimited";
-            document.getElementsByClassName("startfalse")[1].getElementsByTagName("p")[0].textContent = "Daily actions limit reached - upgrade for unlimited";            
+            document.getElementsByClassName("startfalse")[1].getElementsByTagName("p")[0].textContent = "Daily actions limit reached - upgrade for unlimited";
         } else {
             u()
         }
@@ -373,8 +372,6 @@ async function C() {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none"
     } else {
         document.getElementById("group-scraper-tab")
             .style.display = "block";
@@ -470,13 +467,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
             t()
         });
-    document.getElementById("invites")
-        .addEventListener("click", function () {
-            chrome.runtime.sendMessage({
-                message: "start_invites"
-            });
-            t()
-        });
     document.getElementById("stop")
         .addEventListener("click", function () {
             chrome.runtime.sendMessage({
@@ -502,8 +492,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
         document.getElementById("login-code-tab")
             .style.display = "none"
     });
@@ -514,8 +502,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
         document.getElementById("login-code-tab")
             .style.display = "none"
     });
@@ -524,8 +510,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("group-scraper-tab")
                 .style.display = "block";
             document.getElementById("messages-tab")
-                .style.display = "none";
-            document.getElementById("invites-tab")
                 .style.display = "none";
             document.getElementById("upgrade-tab")
                 .style.display = "none";
@@ -549,8 +533,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
         document.getElementById("login-code-tab")
             .style.display = "none";
         document.getElementById("upgrade-tab")
@@ -560,8 +542,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("group-scraper-tab")
             .style.display = "none";
         document.getElementById("messages-tab")
-            .style.display = "none";
-        document.getElementById("invites-tab")
             .style.display = "none";
         document.getElementById("login-code-tab")
             .style.display = "none";
@@ -580,17 +560,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             url: "https://web.telegram.org/?legacy=1#/im"
         })
     });
-    document.getElementsByClassName("go-to-tg")[1].addEventListener("click", function () {
-        chrome.tabs.create({
-            url: "https://web.telegram.org/?legacy=1#/im"
-        })
-    });
     document.getElementsByClassName("go-to-tg-alert")[0].addEventListener("click", function () {
-        chrome.tabs.create({
-            url: "https://web.telegram.org"
-        })
-    });
-    document.getElementsByClassName("go-to-tg-alert")[1].addEventListener("click", function () {
         chrome.tabs.create({
             url: "https://web.telegram.org"
         })
@@ -602,8 +572,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("group-scraper-tab")
                 .style.display = "none";
             document.getElementById("messages-tab")
-                .style.display = "none";
-            document.getElementById("invites-tab")
                 .style.display = "none";
             document.getElementById("login-code-tab")
                 .style.display = "none";
@@ -644,10 +612,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 document.getElementsByClassName("freeversion")[0].style.display = "none";
                 document.getElementsByClassName("freeversion")[1].style.display = "none";
-                document.getElementsByClassName("freeversion")[2].style.display = "none";
                 document.getElementsByClassName("view-subscription-button")[0].style.display = "block";
                 document.getElementsByClassName("view-subscription-button")[1].style.display = "block";
-                document.getElementsByClassName("view-subscription-button")[2].style.display = "block";
 
                 document.getElementById("current-email")
                     .textContent = email;
@@ -660,10 +626,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     .style.display = "block";
                 document.getElementsByClassName("freeversion")[0].style.display = "none";
                 document.getElementsByClassName("freeversion")[1].style.display = "none";
-                document.getElementsByClassName("freeversion")[2].style.display = "none";
                 document.getElementsByClassName("view-subscription-button")[0].style.display = "block";
                 document.getElementsByClassName("view-subscription-button")[1].style.display = "block";
-                document.getElementsByClassName("view-subscription-button")[2].style.display = "block"
 
                 document.getElementById("upgrade-tab")
                     .style.display = "block";
@@ -676,6 +640,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 document.getElementById("login-processing")
                     .style.display = "none";
                 document.getElementById("login-error")
+                    .style.display = "none"
+                document.getElementById("login-start-error")
                     .style.display = "none"
 
             } else {
@@ -775,10 +741,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .style.display = "block";
             document.getElementsByClassName("freeversion")[0].style.display = "block";
             document.getElementsByClassName("freeversion")[1].style.display = "block";
-            document.getElementsByClassName("freeversion")[2].style.display = "block";
             document.getElementsByClassName("view-subscription-button")[0].style.display = "none";
             document.getElementsByClassName("view-subscription-button")[1].style.display = "none";
-            document.getElementsByClassName("view-subscription-button")[2].style.display = "none";
             y()
         });
     document.getElementById("manage-subscription-button")
