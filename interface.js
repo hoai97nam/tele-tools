@@ -142,33 +142,25 @@ var y = async function () {
     if (s == 0) {
         document.getElementsByClassName("freeversion")[0].style.display = "none";
         document.getElementsByClassName("freeversion")[1].style.display = "none";
-        document.getElementsByClassName("freeversion")[2].style.display = "none";
         document.getElementsByClassName("startfalse")[0].style.display = "none";
         document.getElementsByClassName("startfalse")[1].style.display = "none";
-        document.getElementsByClassName("startfalse")[2].style.display = "none";
         document.getElementsByClassName("starttrue")[0].style.display = "block";
         document.getElementsByClassName("starttrue")[1].style.display = "block";
-        document.getElementsByClassName("starttrue")[2].style.display = "block";
         u()
     } else {
         document.getElementsByClassName("freeversion")[0].style.display = "block";
         document.getElementsByClassName("freeversion")[1].style.display = "block";
-        document.getElementsByClassName("freeversion")[2].style.display = "block";
         let e = await o("actionslog");
         let t = i();
         document.getElementsByClassName("dailyactions")[0].textContent = (e[t] != undefined ? e[t] : "0") + "/" + s;
         document.getElementsByClassName("dailyactions")[1].textContent = (e[t] != undefined ? e[t] : "0") + "/" + s;
-        document.getElementsByClassName("dailyactions")[2].textContent = (e[t] != undefined ? e[t] : "0") + "/" + s;
         if (e[t] != undefined && e[t] >= n["actionsLimit"]) {
             document.getElementsByClassName("startfalse")[0].style.display = "block";
             document.getElementsByClassName("startfalse")[1].style.display = "block";
-            document.getElementsByClassName("startfalse")[2].style.display = "block";
             document.getElementsByClassName("starttrue")[0].style.display = "none";
             document.getElementsByClassName("starttrue")[1].style.display = "none";
-            document.getElementsByClassName("starttrue")[2].style.display = "none";
             document.getElementsByClassName("startfalse")[0].getElementsByTagName("p")[0].textContent = "Daily actions limit reached - upgrade for unlimited";
             document.getElementsByClassName("startfalse")[1].getElementsByTagName("p")[0].textContent = "Daily actions limit reached - upgrade for unlimited";
-            document.getElementsByClassName("startfalse")[2].getElementsByTagName("p")[0].textContent = "Daily actions limit reached - upgrade for unlimited"
         } else {
             u()
         }
@@ -185,16 +177,11 @@ var u = function () {
             }, function (e) {
                 if (e != null && e[0]) {
                     document.getElementsByClassName("starttrue")[0].style.display = "block";
-                    document.getElementsByClassName("starttrue")[2].style.display = "block";
                     document.getElementsByClassName("startfalse")[0].style.display = "none";
-                    document.getElementsByClassName("startfalse")[2].style.display = "none"
                 } else {
                     document.getElementsByClassName("starttrue")[0].style.display = "none";
-                    document.getElementsByClassName("starttrue")[2].style.display = "none";
                     document.getElementsByClassName("startfalse")[0].style.display = "block";
-                    document.getElementsByClassName("startfalse")[2].style.display = "block";
                     document.getElementsByClassName("startfalse")[0].getElementsByTagName("p")[0].textContent = "Navigate to a Telegram group to begin using this feature";
-                    document.getElementsByClassName("startfalse")[2].getElementsByTagName("p")[0].textContent = "Navigate to a Telegram group to begin using this feature"
                 }
             })
         })
@@ -232,10 +219,8 @@ async function E() {
     if (subscriptionStatus == "active") {
         document.getElementsByClassName("freeversion")[0].style.display = "none";
         document.getElementsByClassName("freeversion")[1].style.display = "none";
-        document.getElementsByClassName("freeversion")[2].style.display = "none";
         document.getElementsByClassName("view-subscription-button")[0].style.display = "block";
         document.getElementsByClassName("view-subscription-button")[1].style.display = "block";
-        document.getElementsByClassName("view-subscription-button")[2].style.display = "block";
 
         document.getElementById("current-email")
             .textContent = email;
@@ -248,18 +233,14 @@ async function E() {
             .style.display = "block";
         document.getElementsByClassName("freeversion")[0].style.display = "none";
         document.getElementsByClassName("freeversion")[1].style.display = "none";
-        document.getElementsByClassName("freeversion")[2].style.display = "none";
         document.getElementsByClassName("view-subscription-button")[0].style.display = "block";
         document.getElementsByClassName("view-subscription-button")[1].style.display = "block";
-        document.getElementsByClassName("view-subscription-button")[2].style.display = "block"
 
     } else {
         document.getElementsByClassName("freeversion")[0].style.display = "block";
         document.getElementsByClassName("freeversion")[1].style.display = "block";
-        document.getElementsByClassName("freeversion")[2].style.display = "block";
         document.getElementsByClassName("view-subscription-button")[0].style.display = "none";
         document.getElementsByClassName("view-subscription-button")[1].style.display = "none";
-        document.getElementsByClassName("view-subscription-button")[2].style.display = "none";
 
         document.getElementById("current-email")
             .textContent = "not set";
@@ -389,8 +370,6 @@ async function C() {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none"
     } else {
         document.getElementById("group-scraper-tab")
             .style.display = "block";
@@ -484,13 +463,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
             t()
         });
-    document.getElementById("invites")
-        .addEventListener("click", function () {
-            chrome.runtime.sendMessage({
-                message: "start_invites"
-            });
-            t()
-        });
     document.getElementById("stop")
         .addEventListener("click", function () {
             chrome.runtime.sendMessage({
@@ -516,8 +488,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
     });
     document.getElementsByClassName("upgrade")[1].addEventListener("click", function () {
         document.getElementById("upgrade-tab")
@@ -526,26 +496,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
-    });
-    document.getElementsByClassName("upgrade")[2].addEventListener("click", function () {
-        document.getElementById("upgrade-tab")
-            .style.display = "block";
-        document.getElementById("group-scraper-tab")
-            .style.display = "none";
-        document.getElementById("messages-tab")
-            .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
     });
     document.getElementById("upgrade-button")
         .addEventListener("click", function () {
             document.getElementById("group-scraper-tab")
                 .style.display = "block";
             document.getElementById("messages-tab")
-                .style.display = "none";
-            document.getElementById("invites-tab")
                 .style.display = "none";
             document.getElementById("upgrade-tab")
                 .style.display = "none";
@@ -569,8 +525,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
         document.getElementById("upgrade-tab")
             .style.display = "block"
     });
@@ -578,18 +532,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("group-scraper-tab")
             .style.display = "none";
         document.getElementById("messages-tab")
-            .style.display = "none";
-        document.getElementById("invites-tab")
-            .style.display = "none";
-        document.getElementById("upgrade-tab")
-            .style.display = "block"
-    });
-    document.getElementsByClassName("view-subscription-button")[2].addEventListener("click", function () {
-        document.getElementById("group-scraper-tab")
-            .style.display = "none";
-        document.getElementById("messages-tab")
-            .style.display = "none";
-        document.getElementById("invites-tab")
             .style.display = "none";
         document.getElementById("upgrade-tab")
             .style.display = "block"
@@ -605,17 +547,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             url: "https://web.telegram.org/?legacy=1#/im"
         })
     });
-    document.getElementsByClassName("go-to-tg")[1].addEventListener("click", function () {
-        chrome.tabs.create({
-            url: "https://web.telegram.org/?legacy=1#/im"
-        })
-    });
     document.getElementsByClassName("go-to-tg-alert")[0].addEventListener("click", function () {
-        chrome.tabs.create({
-            url: "https://web.telegram.org"
-        })
-    });
-    document.getElementsByClassName("go-to-tg-alert")[1].addEventListener("click", function () {
         chrome.tabs.create({
             url: "https://web.telegram.org"
         })
@@ -648,10 +580,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 document.getElementsByClassName("freeversion")[0].style.display = "none";
                 document.getElementsByClassName("freeversion")[1].style.display = "none";
-                document.getElementsByClassName("freeversion")[2].style.display = "none";
                 document.getElementsByClassName("view-subscription-button")[0].style.display = "block";
                 document.getElementsByClassName("view-subscription-button")[1].style.display = "block";
-                document.getElementsByClassName("view-subscription-button")[2].style.display = "block";
 
                 document.getElementById("current-email")
                     .textContent = email;
@@ -664,10 +594,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     .style.display = "block";
                 document.getElementsByClassName("freeversion")[0].style.display = "none";
                 document.getElementsByClassName("freeversion")[1].style.display = "none";
-                document.getElementsByClassName("freeversion")[2].style.display = "none";
                 document.getElementsByClassName("view-subscription-button")[0].style.display = "block";
                 document.getElementsByClassName("view-subscription-button")[1].style.display = "block";
-                document.getElementsByClassName("view-subscription-button")[2].style.display = "block"
 
                 document.getElementById("upgrade-tab")
                     .style.display = "block";
@@ -675,6 +603,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     .style.display = "block";
                 document.getElementById("activated-error")
                     .style.display = "none";
+                document.getElementById("login-start-error")
+                    .style.display = "none"
                 document.getElementById("login-start-error")
                     .style.display = "none"
 
@@ -708,10 +638,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .style.display = "block";
             document.getElementsByClassName("freeversion")[0].style.display = "block";
             document.getElementsByClassName("freeversion")[1].style.display = "block";
-            document.getElementsByClassName("freeversion")[2].style.display = "block";
             document.getElementsByClassName("view-subscription-button")[0].style.display = "none";
             document.getElementsByClassName("view-subscription-button")[1].style.display = "none";
-            document.getElementsByClassName("view-subscription-button")[2].style.display = "none";
             y()
         });
     document.getElementById("manage-subscription-button")
