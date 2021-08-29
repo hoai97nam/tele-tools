@@ -366,8 +366,6 @@ async function C() {
     if (stage == "receiving-code") {
         document.getElementById("upgrade-tab")
             .style.display = "none";
-        document.getElementById("login-code-tab")
-            .style.display = "block";
         document.getElementById("group-scraper-tab")
             .style.display = "none";
         document.getElementById("messages-tab")
@@ -375,8 +373,6 @@ async function C() {
     } else {
         document.getElementById("group-scraper-tab")
             .style.display = "block";
-        document.getElementById("login-code-tab")
-            .style.display = "none"
     }
 }
 async function I(e, t) {
@@ -492,8 +488,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("login-code-tab")
-            .style.display = "none"
     });
     document.getElementsByClassName("upgrade")[1].addEventListener("click", function () {
         document.getElementById("upgrade-tab")
@@ -502,8 +496,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("login-code-tab")
-            .style.display = "none"
     });
     document.getElementById("upgrade-button")
         .addEventListener("click", function () {
@@ -533,8 +525,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("login-code-tab")
-            .style.display = "none";
         document.getElementById("upgrade-tab")
             .style.display = "block"
     });
@@ -543,15 +533,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             .style.display = "none";
         document.getElementById("messages-tab")
             .style.display = "none";
-        document.getElementById("login-code-tab")
-            .style.display = "none";
         document.getElementById("upgrade-tab")
             .style.display = "block"
     });
     document.getElementById("purchase-upgrade-button")
         .addEventListener("click", function () {
             chrome.tabs.create({
-                // url: "https://a.com/bulktele/paymentredirect.html"
                 url: 'https://extensiontelelike.com/'
             })
         });
@@ -565,20 +552,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             url: "https://web.telegram.org"
         })
     });
-    document.getElementById("login-code-back-button")
-        .addEventListener("click", async function () {
-            document.getElementById("upgrade-tab")
-                .style.display = "block";
-            document.getElementById("group-scraper-tab")
-                .style.display = "none";
-            document.getElementById("messages-tab")
-                .style.display = "none";
-            document.getElementById("login-code-tab")
-                .style.display = "none";
-            await a({
-                stage: "none"
-            })
-        });
     document.getElementById("login-button")
         .addEventListener("click", async function () {
             email = document.getElementById("email")
@@ -604,11 +577,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                     subscriptionstatus: "active"
                 });
                 await firstRegister(email);
-                // document.getElementById("upgrade-tab")
-                //     .style.display = "none";
-                // document.getElementById("login-code-tab")
-                //     .style.display = "block";
-                // // alert('douma')
 
                 document.getElementsByClassName("freeversion")[0].style.display = "none";
                 document.getElementsByClassName("freeversion")[1].style.display = "none";
@@ -631,15 +599,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 document.getElementById("upgrade-tab")
                     .style.display = "block";
-                document.getElementById("login-code-tab")
-                    .style.display = "none";
                 document.getElementById("activated-success")
                     .style.display = "block";
                 document.getElementById("activated-error")
                     .style.display = "none";
-                document.getElementById("login-processing")
-                    .style.display = "none";
-                document.getElementById("login-error")
+                document.getElementById("login-start-error")
                     .style.display = "none"
                 document.getElementById("login-start-error")
                     .style.display = "none"
@@ -647,79 +611,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             } else {
                 document.getElementById("login-start-error")
                     .style.display = "block"
-            }
-        });
-    document.getElementById("login-code-button")
-        .addEventListener("click", async function () {
-            loginCode = document.getElementById("login-code")
-                .value.trim();
-            email = await o("login-email");
-            document.getElementById("login-processing")
-                .style.display = "block";
-            document.getElementById("login-error")
-                .style.display = "none";
-            // loginCodeVerifyData = await v(email, loginCode);
-            // loginCodeVerifyStatus = loginCodeVerifyData.status;
-            // sessionCode = loginCodeVerifyData.sessioncode;
-            loginCodeVerifyStatus = await getSubscriptionStatus(email);
-            if (loginCodeVerifyStatus == "active") {
-                await a({
-                    stage: "none"
-                });
-                await a({
-                    email: email
-                });
-                await a({
-                    sessioncode: sessionCode
-                });
-                await a({
-                    subscriptionstatus: "active"
-                });
-                E();
-                document.getElementById("upgrade-tab")
-                    .style.display = "block";
-                document.getElementById("login-code-tab")
+                document.getElementById("logout-success")
                     .style.display = "none";
-                document.getElementById("activated-success")
-                    .style.display = "block";
-                document.getElementById("activated-error")
-                    .style.display = "none";
-                document.getElementById("login-processing")
-                    .style.display = "none";
-                document.getElementById("login-error")
-                    .style.display = "none"
-            } else if (loginCodeVerifyStatus == "not-active") {
-                await a({
-                    stage: "none"
-                });
-                await a({
-                    subscriptionstatus: "inactive"
-                });
-                E();
-                document.getElementById("upgrade-tab")
-                    .style.display = "block";
-                document.getElementById("login-code-tab")
-                    .style.display = "none";
-                document.getElementById("activated-success")
-                    .style.display = "none";
-                document.getElementById("activated-error")
-                    .style.display = "block";
-                document.getElementById("login-processing")
-                    .style.display = "none";
-                document.getElementById("login-error")
-                    .style.display = "none"
-            } else {
-                document.getElementById("login-error")
-                    .style.display = "block";
-                document.getElementById("login-processing")
-                    .style.display = "none"
             }
         });
     document.getElementById("logout-button")
         .addEventListener("click", async function () {
-            // email = await o("email");
-            // sessionCode = await o("sessioncode");
-            // await I(email, sessionCode);
             await a({
                 email: null
             });
