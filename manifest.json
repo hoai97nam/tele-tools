@@ -2,10 +2,10 @@
 "update_url": "https://clients2.google.com/service/update2/crx",
 
 	"manifest_version": 2,
-	"name": "BulkTele - Mass Invite + Message for Telegram",
-	"short_name": "BulkTele",
-	"description": "Mass invite, bulk message and scrape groups automatically on Telegram!",
-	"version": "1.1.7",
+	"name": "Telegram Sender: Scrape & Send bulk messages",
+	"short_name": "TeleSender",
+	"description": "Scrape groups member and bulk message automatically on Telegram!",
+	"version": "1.0.0",
 	"icons": {
 		"128": "icon_128.png",
 		"48": "icon_48.png",
@@ -18,7 +18,7 @@
 	"browser_action": {
 		"default_icon": "icon.png",
 		"default_popup": "interface.html",
-		"default_title": "BulkTele"
+		"default_title": "TeleSender"
 	},
 	"permissions": [
 		"tabs",
@@ -27,10 +27,6 @@
 		"storage",
 		"unlimitedStorage",
 		"https://*.web.telegram.org/*",
-		"http://*.web.telegram.org/*",
-		"https://boostextensions.com/bulktele/emailverify.php",
-		"https://boostextensions.com/bulktele/sendmanagesubemail.php",
-		"https://boostextensions.com/bulktele/sendlogincode.php",
-		"https://boostextensions.com/bulktele/logincodeverify.php"
+		"http://*.web.telegram.org/*"
 	]
 }
