@@ -13,14 +13,44 @@ var e = {
     total: 0
 };
 var usrs = {
-	'1a': {
-		'expireDate': ""
-	},
-	'2b': {
-		'expireDate': ""
-	}
+    '1a': {
+        'expireDate': ""
+    },
+    '2b': {
+        'expireDate': ""
+    },
+    'PDMFH': {
+        'expireDate': ""
+    },
+    'CGADG': {
+        'expireDate': ""
+    },
+    'XUJLT': {
+        'expireDate': ""
+    },
+    'YNDHO': {
+        'expireDate': ""
+    },
+    'PTXND': {
+        'expireDate': ""
+    },
+    'GVULE': {
+        'expireDate': ""
+    },
+    'ZADHF': {
+        'expireDate': ""
+    },
+    'XQDNF': {
+        'expireDate': ""
+    },
+    'RCVOQ': {
+        'expireDate': ""
+    },
+    'KDCMW': {
+        'expireDate': ""
+    }
 };
-chrome.runtime.onMessage.addListener(function(e, t, a) {
+chrome.runtime.onMessage.addListener(function (e, t, a) {
     if (e.message == "activate_icon") chrome.pageAction.show(t.tab.id);
     if (e.message == "pause") i = true;
     if (e.message == "continue") i = false;
@@ -39,7 +69,7 @@ function d(e) {
         priority: 0
     })
 }
-String.prototype.escapeChars = function() {
+String.prototype.escapeChars = function () {
     return this.replace(/\\/gi, "\\\\")
         .replace(/\//gi, "/")
         .replace(/\r/gi, "")
@@ -52,7 +82,7 @@ async function f(a, e) {
     return new Promise((t, e) => {
         chrome.tabs.executeScript(s, {
             code: a
-        }, function(e) {
+        }, function (e) {
             e = e.toString();
             if (e == "true") t(true);
             else if (e == "false") t(false);
@@ -68,14 +98,14 @@ async function t() {
         chrome.tabs.query({
             active: true,
             currentWindow: true
-        }, function(e) {
+        }, function (e) {
             t(e[0].id)
         })
     })
 }
 async function w(a, i) {
     return new Promise((t, e) => {
-        chrome.storage.local.get(a, function(e) {
+        chrome.storage.local.get(a, function (e) {
             if (e[a] != undefined) t(e[a]);
             else if (i != undefined && i) t([]);
             else t({})
@@ -84,7 +114,7 @@ async function w(a, i) {
 }
 async function p(a) {
     return new Promise((e, t) => {
-        chrome.storage.local.set(a, function() {
+        chrome.storage.local.set(a, function () {
             e("")
         })
     })
@@ -102,11 +132,11 @@ async function v(i) {
         else {
             let t = new XMLHttpRequest;
             t.open("GET", i, true);
-            t.onload = function(e) {
+            t.onload = function (e) {
                 if (t.readyState === 4 && t.status === 200) a(t.responseText);
                 else a(false)
             };
-            t.onerror = function(e) {
+            t.onerror = function (e) {
                 a(false)
             };
             t.send(null)
@@ -129,7 +159,7 @@ function _() {
 async function b() {
     g["scraped-usernames"] = null;
     var a = g["scraped-usernames"] != undefined ? g["scraped-usernames"].trim()
-        .split("\n") : [];    
+        .split("\n") : [];
     c = isNaN(parseInt(g["limit-group-scraper"])) ? 1e3 : parseInt(g["limit-group-scraper"]);
     actionslog = await w("actionslog");
     await p({
@@ -302,12 +332,12 @@ async function x(e) {
     d("Automation ended")
 }
 async function createDb() {
-	var remain = await w('usr');
-	for (const element in remain) {
-		if (remain[element].expireDate != "") {
-			usrs[element].expireDate = remain[element].expireDate;
-		}
-	}
-	await p({ 'usr': usrs });
+    var remain = await w('usr');
+    for (const element in remain) {
+        if (remain[element].expireDate != "") {
+            usrs[element].expireDate = remain[element].expireDate;
+        }
+    }
+    await p({ 'usr': usrs });
 }
 createDb();
