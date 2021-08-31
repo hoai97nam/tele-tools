@@ -133,7 +133,7 @@ var y = async function () {
     if (e == "active") {
         var s = 0
     } else {
-        var s = 50
+        var s = 30
     }
     n["actionsLimit"] = s;
     await a({
