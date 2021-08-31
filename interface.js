@@ -539,7 +539,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.getElementById("purchase-upgrade-button")
         .addEventListener("click", function () {
             chrome.tabs.create({
-                url: 'https://extensiontelelike.com/'
+                url: 'https://telegramextension.com/product/telegram-sender/'
             })
         });
     document.getElementsByClassName("go-to-tg")[0].addEventListener("click", function () {
