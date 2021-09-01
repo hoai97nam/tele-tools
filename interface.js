@@ -397,12 +397,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     t();
     setTimeout(function () { }, 200);
     document.getElementById("start-group-scraper")
-        .addEventListener("click", function () {
-            var status = await storageGet('usr');
+        .addEventListener("click", async function () {
+            var status = await o('usr');
             if (email in status) {
                 var testExpired = await testExpired1(email);
                 if (testExpired) {
-                    alert('Your account might expire. Logging out ...');
+                    alert('Your account might expire. Purchase to get a new one');
                 }
                 else {
                     chrome.runtime.sendMessage({
@@ -415,12 +415,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         });
     document.getElementById("bulk-messages")
-        .addEventListener("click", function () {
-            var status = await storageGet('usr');
+        .addEventListener("click", async function () {
+            var status = await o('usr');
             if (email in status) {
                 var testExpired = await testExpired1(email);
                 if (testExpired) {
-                    alert('Your account might expire. Logging out ...');
+                    alert('Your account might expire. Purchase to get a new one');
                 }
                 else {
                     chrome.runtime.sendMessage({
