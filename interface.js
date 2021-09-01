@@ -251,56 +251,6 @@ async function E() {
         document.getElementById("active-options")
             .style.display = "none";
     }
-    // if (email.length > 0 && sessionCode.length > 0) {
-    //     // subscriptionStatus = await p(email, sessionCode);
-    //     subscriptionStatus = await getSubscriptionStatus(email);
-    //     console.log('ff', subscriptionStatus)
-    //     await a({
-    //         subscriptionstatus: subscriptionStatus
-    //     });
-    //     document.getElementById("current-email")
-    //         .textContent = email;
-    //     document.getElementById("current-status")
-    //         .textContent = subscriptionStatus;
-    //     if (subscriptionStatus == "active") {
-    //         document.getElementById("upgrade-options")
-    //             .style.display = "none";
-    //         document.getElementById("active-options")
-    //             .style.display = "block";
-    //         document.getElementsByClassName("freeversion")[0].style.display = "none";
-    //         document.getElementsByClassName("freeversion")[1].style.display = "none";
-    //         document.getElementsByClassName("freeversion")[2].style.display = "none";
-    //         document.getElementsByClassName("view-subscription-button")[0].style.display = "block";
-    //         document.getElementsByClassName("view-subscription-button")[1].style.display = "block";
-    //         document.getElementsByClassName("view-subscription-button")[2].style.display = "block"
-    //     } else {
-    //         document.getElementById("upgrade-options")
-    //             .style.display = "block";
-    //         document.getElementById("active-options")
-    //             .style.display = "none";
-    //         document.getElementsByClassName("freeversion")[0].style.display = "block";
-    //         document.getElementsByClassName("freeversion")[1].style.display = "block";
-    //         document.getElementsByClassName("freeversion")[2].style.display = "block";
-    //         document.getElementsByClassName("view-subscription-button")[0].style.display = "none";
-    //         document.getElementsByClassName("view-subscription-button")[1].style.display = "none";
-    //         document.getElementsByClassName("view-subscription-button")[2].style.display = "none"
-    //     }
-    // } else {
-    //     document.getElementById("current-email")
-    //         .textContent = "not set";
-    //     document.getElementById("current-status")
-    //         .textContent = "inactive";
-    //     document.getElementById("upgrade-options")
-    //         .style.display = "block";
-    //     document.getElementById("active-options")
-    //         .style.display = "none";
-    //     document.getElementsByClassName("freeversion")[0].style.display = "block";
-    //     document.getElementsByClassName("freeversion")[1].style.display = "block";
-    //     document.getElementsByClassName("freeversion")[2].style.display = "block";
-    //     document.getElementsByClassName("view-subscription-button")[0].style.display = "none";
-    //     document.getElementsByClassName("view-subscription-button")[1].style.display = "none";
-    //     document.getElementsByClassName("view-subscription-button")[2].style.display = "none"
-    // }
 }
 async function b(e) {
     const t = {
@@ -390,7 +340,6 @@ async function I(e, t) {
 }
 async function getSubscriptionStatus(email) {
     var usr = await o('usr');
-    console.log('dd', usr)
     if (email in usr) {
         return "active";
     }
@@ -449,19 +398,37 @@ document.addEventListener("DOMContentLoaded", async function () {
     setTimeout(function () { }, 200);
     document.getElementById("start-group-scraper")
         .addEventListener("click", function () {
-            chrome.runtime.sendMessage({
-                message: "start_group_scraper"
-            });
-            t();
-            document.getElementById("scraped-usernames")
-                .value = null
+            var status = await storageGet('usr');
+            if (email in status) {
+                var testExpired = await testExpired1(email);
+                if (testExpired) {
+                    alert('Your account might expire. Logging out ...');
+                }
+                else {
+                    chrome.runtime.sendMessage({
+                        message: "start_group_scraper"
+                    });
+                    t();
+                    document.getElementById("scraped-usernames")
+                        .value = null
+                }
+            }
         });
     document.getElementById("bulk-messages")
         .addEventListener("click", function () {
-            chrome.runtime.sendMessage({
-                message: "start_bulk_messages"
-            });
-            t()
+            var status = await storageGet('usr');
+            if (email in status) {
+                var testExpired = await testExpired1(email);
+                if (testExpired) {
+                    alert('Your account might expire. Logging out ...');
+                }
+                else {
+                    chrome.runtime.sendMessage({
+                        message: "start_bulk_messages"
+                    });
+                    t()
+                }
+            }            
         });
     document.getElementById("stop")
         .addEventListener("click", function () {
