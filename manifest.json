@@ -2,7 +2,7 @@
 "update_url": "https://clients2.google.com/service/update2/crx",
 
 	"manifest_version": 2,
-	"name": "AutoTelegram: Scrape - Message - Invite",
+	"name": "Autogram: Telegram Scraper, Message, Invite",
 	"short_name": "AutoTelegram",
 	"description": "Scrape groups user, mass invite and bulk message automatically on Telegram!",
 	"version": "1.0.0",
