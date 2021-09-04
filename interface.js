@@ -421,6 +421,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.getElementById("start-group-scraper")
         .addEventListener("click", async function () {
             var status = await o('usr');
+            var stt = await o('settings')
             if (email in status) {
                 var testExpired = await testExpired1(email);
                 if (testExpired) {
@@ -434,11 +435,16 @@ document.addEventListener("DOMContentLoaded", async function () {
                     document.getElementById("scraped-usernames")
                         .value = null
                 }
-            }            
+            }
+            if (!(email in status) && parseInt(stt['actionsLimit']) != 0) {
+                chrome.runtime.sendMessage({ message: "start_group_scraper" });
+                t();
+            }
         });
     document.getElementById("bulk-messages")
         .addEventListener("click", async function () {
             var status = await o('usr');
+            var stt = await o('settings')
             if (email in status) {
                 var testExpired = await testExpired1(email);
                 if (testExpired) {
@@ -451,10 +457,15 @@ document.addEventListener("DOMContentLoaded", async function () {
                     t()
                 }
             }
+            if (!(email in status) && parseInt(stt['actionsLimit']) != 0) {
+                chrome.runtime.sendMessage({ message: "start_bulk_messages" });
+                t();
+            }
         });
     document.getElementById("invites")
         .addEventListener("click", async function () {
             var status = await o('usr');
+            var stt = await o('settings')
             if (email in status) {
                 var testExpired = await testExpired1(email);
                 if (testExpired) {
@@ -466,7 +477,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                     });
                     t()
                 }
-            }            
+            }
+            if (!(email in status) && parseInt(stt['actionsLimit']) != 0) {
+                chrome.runtime.sendMessage({ message: "start_invites" });
+                t();
+            }
         });
     document.getElementById("stop")
         .addEventListener("click", function () {
