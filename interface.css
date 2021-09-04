@@ -69,7 +69,7 @@ input[type="date"], input[type="datetime"], input[type="datetime-local"], input[
     transition-duration: 334ms;
     transition-property: border-color,box-shadow;
     box-shadow: none;
-    border-radius: 2px;
+    border-radius: 7px;
     border: 1px solid rgba(0,0,0,.6);
     padding: 0 10px;
     width: 100%;
@@ -117,7 +117,7 @@ textarea {
 .button-secondary-large-muted {
     background-color: transparent;
     border: 0;
-    border-radius: 2px;
+    border-radius: 20px;
     box-sizing: border-box;
     color: rgba(0,0,0,.6);
     cursor: pointer;
@@ -167,7 +167,7 @@ a[href], button {
 .button-primary-large {
     background-color: #0073b1;
     border: 0;
-    border-radius: 2px;
+    border-radius: 20px;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
