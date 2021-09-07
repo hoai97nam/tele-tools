@@ -361,7 +361,6 @@ async function I(e, t) {
 }
 async function getSubscriptionStatus(email) {
     var usr = await o('usr');
-    console.log('dd', usr)
     if (email in usr) {
         return "active";
     }
