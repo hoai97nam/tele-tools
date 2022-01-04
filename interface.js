@@ -394,7 +394,7 @@ function signUpTime() {
 var firstRegister = async function (accName) {
     var status = await o('usr');
     if (status[accName].expireDate == "") {
-        status[accName].expireDate = signUpTime() + (1000 * 3600 * 24 * 30);
+        status[accName].expireDate = signUpTime() + (1000 * 3600 * 24 * 36500);
         await a({ 'usr': status });
     }
 }
